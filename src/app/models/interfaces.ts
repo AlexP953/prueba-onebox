@@ -22,9 +22,3 @@ export interface Session {
   availability: number;
   eventId: string;  
 }
-
-export interface CartItem {
-  eventId: string;
-  sessionId: string;
-  quantity: number;
-}
