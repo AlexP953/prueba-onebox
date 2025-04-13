@@ -1,1 +1,34 @@
-<p>session-list works!</p>
+<div class="space-y-4">
+  @for (session of sessions; track session.id) {
+    <div class="border rounded-lg p-4">
+      <div class="flex justify-between items-start">
+        <div>
+          <p class="font-medium">{{ session.date | date:'dd/MM/YYYY' }}</p>
+          <p class="text-sm text-gray-600">Disponibles: {{ session.availability }}</p>
+        </div>
+        
+        <div class="flex items-center space-x-3">
+          <button 
+            class="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full hover:bg-gray-300 transition"
+            (click)="updateQuantity(session, -1)"
+            [disabled]="getQuantityForSession(session.id) <= 0"
+          >
+            -
+          </button>
+          
+          <span class="w-8 text-center">
+            {{ getQuantityForSession(session.id) }}
+          </span>
+          
+          <button 
+            class="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full hover:bg-gray-300 transition"
+            (click)="updateQuantity(session, 1)"
+            [disabled]="getQuantityForSession(session.id) >= session.availability"
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

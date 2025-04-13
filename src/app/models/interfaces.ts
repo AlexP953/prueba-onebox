@@ -19,7 +19,8 @@ export interface Concert {
 export interface Session {
   id: string;
   date: string;
-  available: number;
+  availability: number;
+  eventId: string;  
 }
 
 export interface CartItem {
